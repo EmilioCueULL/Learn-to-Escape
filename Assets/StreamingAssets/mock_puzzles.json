@@ -1,0 +1,19 @@
+{
+    "tema": "La Guerra Fría",
+    "puzzles": [
+        {
+            "id": 1,
+            "tipo": "KEYPAD",
+            "pregunta": "¿En qué año cayó el muro de Berlín?",
+            "respuesta": "1989",
+            "pista": "Fue a finales de la década de los 80."
+        },
+        {
+            "id": 2,
+            "tipo": "COMPUTER",
+            "pregunta": "¿Qué país lanzó el satélite Sputnik 1?",
+            "respuesta": "URSS",
+            "pista": "Unión de Repúblicas Socialistas Soviéticas."
+        }
+    ]
+}

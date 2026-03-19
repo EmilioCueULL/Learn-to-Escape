@@ -1,17 +1,16 @@
 using UnityEngine;
 
-// Un Senior siempre protege sus dependencias. Si este script necesita un CharacterController, oblígalo.
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
     [Header("Movement")]
-    public float walkSpeed = 5.0f; // Velocidad de tu GDD
-    public float gravity = -9.81f; // Sin esto, flotarías
+    public float walkSpeed = 5.0f;
+    public float gravity = -9.81f;
 
     [Header("Camera")]
     public Transform playerCamera;
     public float mouseSensitivity = 20f;
-    [Tooltip("Límite vertical para que el jugador no se rompa el cuello")]
+    [Tooltip("LÃ­mite vertical para que el jugador no se rompa el cuello")]
     public float maxLookAngle = 85f;
 
     private CharacterController controller;
@@ -19,7 +18,7 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
-    private float cameraPitch = 0f; // Rotación en X de la cámara
+    private float cameraPitch = 0f; // RotaciÃ³n en X de la cÃ¡mara
 
     private void Awake()
     {
@@ -55,7 +54,7 @@ public class FirstPersonController : MonoBehaviour
         cameraPitch -= lookY;
         cameraPitch = Mathf.Clamp(cameraPitch, -maxLookAngle, maxLookAngle);
 
-        // Rotamos la cámara arriba/abajo
+        // Rotamos la cÃ¡mara arriba/abajo
         playerCamera.localRotation = Quaternion.Euler(cameraPitch, 0f, 0f);
 
         // Rotamos todo el cuerpo del jugador izquierda/derecha
@@ -67,14 +66,14 @@ public class FirstPersonController : MonoBehaviour
         // Verificamos si tocamos el suelo para resetear la gravedad
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; // Un pequeño empuje hacia abajo para que el isGrounded sea estable
+            velocity.y = -2f; // Un pequeÃ±o empuje hacia abajo para que el isGrounded sea estable
         }
 
         // Movimiento local relativo hacia donde mira el jugador
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * walkSpeed * Time.deltaTime);
 
-        // Aplicamos gravedad matemáticamente (v = v0 + at)
+        // Aplicamos gravedad (v = v0 + at)
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime); // Aplicamos el desplazamiento vertical
     }
